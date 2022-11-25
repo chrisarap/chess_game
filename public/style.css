@@ -1,0 +1,12 @@
+body {
+  background: red;
+}
+
+
+
+#board {
+  background: blue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
