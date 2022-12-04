@@ -1,5 +1,3 @@
-let board = {};
-
 let piecesCode = {
 	br: '265c',
 	wr: '2656',
@@ -62,6 +60,7 @@ let initialPos = {
 	'h7': piecesCode.bp,
 };
 
+let board = {};
 // ascii for letter 'a' is 97
 let letterFromAscii = 97;
 let boardNumber = 1;
@@ -80,8 +79,8 @@ let createBoardObj = () => {
 				[coordinate]: {
 					number: boardNumber,
 					color: color,
-					piece: pieceCode
-
+					piece: pieceCode,
+					name: coordinate
 				}
 			}
 
@@ -89,49 +88,72 @@ let createBoardObj = () => {
 			letterFromAscii++;
 			Object.assign(board, squareData);
 
-			console.log('coordinate: ', coordinate, 'board number: ', boardNumber % 2);
+			// console.log('coordinate: ', coordinate, 'board number: ', boardNumber % 2);
 		}
 		letterFromAscii = 97;
 		squareColor.reverse();
 	}
+	//console.log(board);
+};
 
+
+
+// render
+let createIcon = pieceCode => String.fromCodePoint(parseInt(pieceCode, 16));
+
+let createHtmlBoard = () => {
+	// create
+	let boardHtml = document.createElement('div');
+
+	// attributes
+	boardHtml.setAttribute('id', 'board');
+
+	boardHtml.style.width = '400px';
+	boardHtml.style.height = '400px';
+
+	// append
+	document.body.appendChild(boardHtml);
+};
+
+let createHtmlSquares = () => {
+
+	let boardHtml = document.getElementById('board');
+
+	for (let i in board) {
+
+		let coordinate = board[i];
+
+		// create element
+		let square = document.createElement('div');
+
+		// attributes
+		square.setAttribute('id', coordinate.name);
+		square.setAttribute('class', 'square');
+
+		square.style.width = '50px';
+		square.style.height = '50px';
+		square.style.background = coordinate.color;
+
+		square.textContent = typeof coordinate.piece == 'string' ? i + createIcon(coordinate.piece) : i;
+
+		// append
+		boardHtml.appendChild(square);
+	}
 };
 
 createBoardObj();
-
-// render
-
-let createIcon = code => String.fromCodePoint(parseInt(code, 16));
-let boardHtml = document.createElement('div');
-boardHtml.setAttribute('id', 'board');
-document.body.appendChild(boardHtml);
-
-for (let i = 1; i < 65; i++) {
-	let square = document.createElement('div');
-	square.setAttribute('class', 'square');
-	square.setAttribute('id', i);
-	boardHtml.appendChild(square);
-}
-
-for (let i in board) {
-	let coord = board[i];
-	let id = coord.number;
-	let element = document.getElementById(id);
-	element.style.background = coord.color;
-	element.textContent = typeof coord.piece == 'string' ? i + createIcon(coord.piece) : i;
-	console.log('test', coord);
-	element.style.width = '50px';
-	element.style.height = '50px';
-}
+createHtmlBoard();
+createHtmlSquares();
 
 
+/*
 
 document.getElementById("1").addEventListener("click", function () {
 	document.getElementById("1").innerHTML = "Hello World!";
 }, false);
 
+*/
 
-console.log(board);
 
 
 
