@@ -3,11 +3,26 @@ let letterFromAscii = 97;
 let boardNumber = 1;
 let squareColor = ['black' , 'white'];
 let pawns = 2;
-let initialPos = {
-	'a1' : 'r',
-	'h1' : 'r'
-};
 
+let piecesCode = {
+  br : '265c',
+  wr : '2656',
+  bk : '265e',
+  wk : '2658',
+  bb : '265d',
+  wb : '2657',
+  bp : '265f',
+  wp : '2659',
+  bk : '265a',
+  wk : '2654',
+  bq : '265b',
+  wq : '2655'
+}
+
+let initialPos = {
+	'a1' : piecesCode.rw,
+	'h1' : piecesCode.rw
+};
 /*rkbqkbkr
  *pppppppp
  *
@@ -62,9 +77,12 @@ for(let i in board) {
 
 }
 
+
+let piece = piecesCode.wr;
+
 let test = document.createElement('div');
 test.setAttribute('id', 'test');
-test.textContent = String.fromCodePoint(parseInt('265c', 16));
+test.textContent = String.fromCodePoint(parseInt(piece, 16));
 document.body.appendChild(test);
 
 
