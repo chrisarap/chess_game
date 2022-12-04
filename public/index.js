@@ -1,3 +1,5 @@
+let arr = [];
+
 let piecesCode = {
 	br: '265c',
 	wr: '2656',
@@ -119,25 +121,69 @@ let createHtmlSquares = () => {
 
 	let boardHtml = document.getElementById('board');
 
-	for (let i in board) {
+	for (let coordinateName in board) {
 
-		let coordinate = board[i];
+		let coordinateObj = board[coordinateName];
 
 		// create element
 		let square = document.createElement('div');
 
 		// attributes
-		square.setAttribute('id', coordinate.name);
+		square.setAttribute('id', coordinateObj.name);
 		square.setAttribute('class', 'square');
 
 		square.style.width = '50px';
 		square.style.height = '50px';
-		square.style.background = coordinate.color;
+		square.style.background = coordinateObj.color;
 
-		square.textContent = typeof coordinate.piece == 'string' ? i + createIcon(coordinate.piece) : i;
+		square.addEventListener('click', e => {
+			arr.push(e.target.id);
+			movePiece();
+		});
+
+		renderPiece(square, coordinateObj, coordinateName);
 
 		// append
 		boardHtml.appendChild(square);
+	}
+};
+
+let renderPiece = (htmlElement, coordinateObj, coordinateName) => {
+	htmlElement.textContent = typeof coordinateObj.piece == 'string'
+		? coordinateName + createIcon(coordinateObj.piece)
+		: coordinateName;
+};
+
+let movePiece = () => {
+
+	let first = board[arr[0]];
+	
+	let aux = '';
+
+	let firstElement = document.getElementById(first.name);
+	
+
+	if (arr.length == 1) {
+		console.log('first: ', first);
+
+	} else if (arr.length == 2) {
+
+		let second = board[arr[1]];
+		let secondElement = document.getElementById(second.name);
+		
+		console.log('first: ', first, '\nsecond: ', second);
+		aux = first.piece;
+
+		second.piece = first.piece;
+		first.piece = null;
+		aux = '';
+		arr = [];
+
+		renderPiece(firstElement, first, first.name);
+		renderPiece(secondElement, second, second.name);
+
+		console.log(board);
+
 	}
 };
 
