@@ -1,4 +1,4 @@
-let arr = [];
+
 
 let piecesCode = {
 	br: '265c',
@@ -117,6 +117,8 @@ let createHtmlBoard = () => {
 	document.body.appendChild(boardHtml);
 };
 
+let arr = [];
+
 let createHtmlSquares = () => {
 
 	let boardHtml = document.getElementById('board');
@@ -157,32 +159,50 @@ let renderPiece = (htmlElement, coordinateObj, coordinateName) => {
 let movePiece = () => {
 
 	let first = board[arr[0]];
-	
+
 	let aux = '';
 
 	let firstElement = document.getElementById(first.name);
-	
+	let firstElementColor = first.color;
 
 	if (arr.length == 1) {
-		console.log('first: ', first);
+
+		if (first.piece == null) {
+			arr = [];
+			console.log('you cannot select empty space');
+		} else {
+			firstElement.style.background = 'grey';
+			console.log('first: ', first);
+		}
+
 
 	} else if (arr.length == 2) {
 
 		let second = board[arr[1]];
-		let secondElement = document.getElementById(second.name);
-		
-		console.log('first: ', first, '\nsecond: ', second);
-		aux = first.piece;
 
-		second.piece = first.piece;
-		first.piece = null;
-		aux = '';
+		if (first != second) {
+			let secondElement = document.getElementById(second.name);
+
+
+			console.log('first: ', first, '\nsecond: ', second);
+			aux = first.piece;
+
+			second.piece = first.piece;
+			first.piece = null;
+			aux = '';
+			arr = [];
+
+			renderPiece(firstElement, first, first.name);
+			renderPiece(secondElement, second, second.name);
+
+			console.log(board);
+		}
+
+		firstElement.style.background = firstElementColor;
+		console.log('the are equals');
 		arr = [];
 
-		renderPiece(firstElement, first, first.name);
-		renderPiece(secondElement, second, second.name);
 
-		console.log(board);
 
 	}
 };
@@ -190,16 +210,4 @@ let movePiece = () => {
 createBoardObj();
 createHtmlBoard();
 createHtmlSquares();
-
-
-/*
-
-document.getElementById("1").addEventListener("click", function () {
-	document.getElementById("1").innerHTML = "Hello World!";
-}, false);
-
-*/
-
-
-
 
