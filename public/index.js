@@ -76,14 +76,16 @@ let createBoardObj = () => {
 			let coordinate = String.fromCharCode(letterFromAscii) + (i + 1);
 			let color = boardNumber % 2 ? squareColor[0] : squareColor[1];
 			let pieceData = initialPos[coordinate];
-			console.log('hey ', pieceData, ' ', coordinate)
 
 			let pieceCode = !pieceData ? null : pieceData.code;
+			let colorPiece = !pieceData ? null : pieceData.colorPiece;
+
 			let squareData = {
 				[coordinate]: {
 					number: boardNumber,
 					color: color,
 					piece: pieceCode,
+					colorPiece: colorPiece,
 					name: coordinate
 				}
 			}
@@ -182,15 +184,18 @@ let movePiece = () => {
 
 		let second = board[arr[1]];
 
-		if (first != second) {
+		if (first != second && first.colorPiece != second.colorPiece) {
 			let secondElement = document.getElementById(second.name);
-
 
 			console.log('first: ', first, '\nsecond: ', second);
 			aux = first.piece;
+			let auxColorPiece = first.colorPiece;
 
 			second.piece = first.piece;
+			second.colorPiece = auxColorPiece;
+
 			first.piece = null;
+			first.colorPiece = null;
 			aux = '';
 			arr = [];
 
@@ -201,11 +206,7 @@ let movePiece = () => {
 		}
 
 		firstElement.style.background = firstElementColor;
-		console.log('the are equals');
 		arr = [];
-
-
-
 	}
 };
 
