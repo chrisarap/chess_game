@@ -5,7 +5,7 @@ let piecesData = {
 	whiteKnight: { code: '2658', colorPiece: 'white', initialPosition: ['b1'] },
 	blackBishop: { code: '265d', colorPiece: 'black', initialPosition: ['c8'] },
 	whiteBishop: { code: '2657', colorPiece: 'white', initialPosition: ['c1'] },
-	blackPawn: { code: '265f', colorPiece: 'black', srcImg: './public/black_pawn.png', initialPosition: ['a7', 'b7'] },
+	blackPawn: { code: '265f', colorPiece: 'black', srcImg: './public/black_pawn.png', initialPosition: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'] },
 	whitePawn: { code: '2659', colorPiece: 'white', initialPosition: ['a2'] },
 	blackKing: { code: '265a', colorPiece: 'black', initialPosition: ['e1'] },
 	whiteKing: { code: '2654', colorPiece: 'white', srcImg: './public/white_king.png', initialPosition: ['e1'] },
