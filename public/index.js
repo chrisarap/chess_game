@@ -1,16 +1,16 @@
 let piecesData = {
-	blackRook: { code: '265c', colorPiece: 'black', initialPosition: ['a8'] },
-	whiteRook: { code: '2656', colorPiece: 'white', initialPosition: ['a1'] },
-	blackKnight: { code: '265e', colorPiece: 'black', initialPosition: ['b8'] },
-	whiteKnight: { code: '2658', colorPiece: 'white', initialPosition: ['b1'] },
-	blackBishop: { code: '265d', colorPiece: 'black', initialPosition: ['c8'] },
-	whiteBishop: { code: '2657', colorPiece: 'white', initialPosition: ['c1'] },
-	blackPawn: { code: '265f', colorPiece: 'black', srcImg: './public/black_pawn.png', initialPosition: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'] },
-	whitePawn: { code: '2659', colorPiece: 'white', initialPosition: ['a2'] },
-	blackKing: { code: '265a', colorPiece: 'black', initialPosition: ['e1'] },
+	blackRook: { code: '265c', colorPiece: 'black', srcImg: './public/black_rook.png', initialPosition: ['a8', 'h8'] },
+	whiteRook: { code: '2656', colorPiece: 'white', srcImg: './public/white_rook.png', initialPosition: ['a1', 'h1'] },
+	blackKnight: { code: '265e', colorPiece: 'black', srcImg: './public/black_knight.png', initialPosition: ['b8', 'g8'] },
+	whiteKnight: { code: '2658', colorPiece: 'white', srcImg: './public/white_knight.png', initialPosition: ['b1', 'g1'] },
+	blackBishop: { code: '265d', colorPiece: 'black', srcImg: './public/black_bishop.png', initialPosition: ['c8', 'f8'] },
+	whiteBishop: { code: '2657', colorPiece: 'white', srcImg: './public/white_bishop.png', initialPosition: ['c1', 'f1'] },
+	blackPawn: { code: '265f', colorPiece: 'black', srcImg: './public/black_pawn.png', srcImg: './public/black_pawn.png', initialPosition: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'] },
+	whitePawn: { code: '2659', colorPiece: 'white', srcImg: './public/white_pawn.png', initialPosition: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'] },
+	blackKing: { code: '265a', colorPiece: 'black', srcImg: './public/black_king.png', initialPosition: ['e8'] },
 	whiteKing: { code: '2654', colorPiece: 'white', srcImg: './public/white_king.png', initialPosition: ['e1'] },
-	blackQueen: { code: '265b', colorPiece: 'black', initialPosition: ['d8'] },
-	whiteQueen: { code: '2655', colorPiece: 'white', initialPosition: ['d1'] }
+	blackQueen: { code: '265b', colorPiece: 'black', srcImg: './public/black_queen.png', initialPosition: ['d8'] },
+	whiteQueen: { code: '2655', colorPiece: 'white', srcImg: './public/white_queen.png', initialPosition: ['d1'] }
 }
 
 let initialPos = {
