@@ -8,7 +8,7 @@ let piecesData = {
 	blackPawn: { code: '265f', colorPiece: 'black', srcImg: './public/black_pawn.png', initialPosition: ['a7', 'b7'] },
 	whitePawn: { code: '2659', colorPiece: 'white', initialPosition: ['a2'] },
 	blackKing: { code: '265a', colorPiece: 'black', initialPosition: ['e1'] },
-	whiteKing: { code: '2654', colorPiece: 'white', initialPosition: ['e1'] },
+	whiteKing: { code: '2654', colorPiece: 'white', srcImg: './public/white_king.png', initialPosition: ['e1'] },
 	blackQueen: { code: '265b', colorPiece: 'black', initialPosition: ['d8'] },
 	whiteQueen: { code: '2655', colorPiece: 'white', initialPosition: ['d1'] }
 }
