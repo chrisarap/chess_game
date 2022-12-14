@@ -1,8 +1,19 @@
 body {
   background-color: gray;
+  font-size: 10px;
 }
 
 #board {
   display: flex;
   flex-wrap: wrap-reverse;
+}
+
+.square {
+position: relative;
+}
+
+img {
+position: absolute;
+  width: 99%;
+  height: 99%;
 }

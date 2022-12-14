@@ -1,65 +1,63 @@
-
-
-let piecesCode = {
-	blackRook: { code: '265c', colorPiece: 'black' },
-	whiteRook: { code: '2656', colorPiece: 'white' },
-	blackKnight: { code: '265e', colorPiece: 'black' },
-	whiteKnight: { code: '2658', colorPiece: 'white' },
-	blackBishop: { code: '265d', colorPiece: 'black' },
-	whiteBishop: { code: '2657', colorPiece: 'white' },
-	blackPawn: { code: '265f', colorPiece: 'black' },
-	whitePawn: { code: '2659', colorPiece: 'white' },
-	blackKing: { code: '265a', colorPiece: 'black' },
-	whiteKing: { code: '2654', colorPiece: 'white' },
-	blackQueen: { code: '265b', colorPiece: 'black' },
-	whiteQueen: { code: '2655', colorPiece: 'white' }
+let piecesData = {
+	blackRook: { code: '265c', colorPiece: 'black', initialPosition: ['a8'] },
+	whiteRook: { code: '2656', colorPiece: 'white', initialPosition: ['a1'] },
+	blackKnight: { code: '265e', colorPiece: 'black', initialPosition: ['b8'] },
+	whiteKnight: { code: '2658', colorPiece: 'white', initialPosition: ['b1'] },
+	blackBishop: { code: '265d', colorPiece: 'black', initialPosition: ['c8'] },
+	whiteBishop: { code: '2657', colorPiece: 'white', initialPosition: ['c1'] },
+	blackPawn: { code: '265f', colorPiece: 'black', srcImg: './public/black_pawn.png', initialPosition: ['a7', 'b7'] },
+	whitePawn: { code: '2659', colorPiece: 'white', initialPosition: ['a2'] },
+	blackKing: { code: '265a', colorPiece: 'black', initialPosition: ['e1'] },
+	whiteKing: { code: '2654', colorPiece: 'white', initialPosition: ['e1'] },
+	blackQueen: { code: '265b', colorPiece: 'black', initialPosition: ['d8'] },
+	whiteQueen: { code: '2655', colorPiece: 'white', initialPosition: ['d1'] }
 }
 
 let initialPos = {
 	// rook
-	'a1': piecesCode.whiteRook,
-	'h1': piecesCode.whiteRook,
-	'a8': piecesCode.blackRook,
-	'h8': piecesCode.blackRook,
+	'a1': piecesData.whiteRook,
+	'h1': piecesData.whiteRook,
+	'a8': piecesData.blackRook,
+	'h8': piecesData.blackRook,
 
 	//knight
-	'b1': piecesCode.whiteKnight,
-	'g1': piecesCode.whiteKnight,
-	'b8': piecesCode.blackKnight,
-	'g8': piecesCode.blackKnight,
+	'b1': piecesData.whiteKnight,
+	'g1': piecesData.whiteKnight,
+	'b8': piecesData.blackKnight,
+	'g8': piecesData.blackKnight,
 
 	// bishop
-	'c1': piecesCode.whiteBishop,
-	'f1': piecesCode.whiteBishop,
-	'c8': piecesCode.blackBishop,
-	'f8': piecesCode.blackBishop,
+	'c1': piecesData.whiteBishop,
+	'f1': piecesData.whiteBishop,
+	'c8': piecesData.blackBishop,
+	'f8': piecesData.blackBishop,
 
 	// king
-	'e1': piecesCode.whiteKing,
-	'e8': piecesCode.blackKing,
+	'e1': piecesData.whiteKing,
+	'e8': piecesData.blackKing,
 
 	// queen
-	'd1': piecesCode.whiteQueen,
-	'd8': piecesCode.blackQueen,
+	'd1': piecesData.whiteQueen,
+	'd8': piecesData.blackQueen,
 
 	//pawn
-	'a2': piecesCode.whitePawn,
-	'b2': piecesCode.whitePawn,
-	'c2': piecesCode.whitePawn,
-	'd2': piecesCode.whitePawn,
-	'e2': piecesCode.whitePawn,
-	'f2': piecesCode.whitePawn,
-	'g2': piecesCode.whitePawn,
-	'h2': piecesCode.whitePawn,
+	'a2': piecesData.whitePawn,
+	'b2': piecesData.whitePawn,
+	'c2': piecesData.whitePawn,
+	'd2': piecesData.whitePawn,
+	'e2': piecesData.whitePawn,
+	'f2': piecesData.whitePawn,
+	'g2': piecesData.whitePawn,
+	'h2': piecesData.whitePawn,
 
-	'a7': piecesCode.blackPawn,
-	'b7': piecesCode.blackPawn,
-	'c7': piecesCode.blackPawn,
-	'd7': piecesCode.blackPawn,
-	'e7': piecesCode.blackPawn,
-	'f7': piecesCode.blackPawn,
-	'g7': piecesCode.blackPawn,
-	'h7': piecesCode.blackPawn
+	'a7': piecesData.blackPawn,
+	'b7': piecesData.blackPawn,
+	'c7': piecesData.blackPawn,
+	'd7': piecesData.blackPawn,
+	'e7': piecesData.blackPawn,
+	'f7': piecesData.blackPawn,
+	'g7': piecesData.blackPawn,
+	'h7': piecesData.blackPawn
 };
 
 let board = {};
@@ -75,18 +73,28 @@ let createBoardObj = () => {
 			// first return 'a1'
 			let coordinate = String.fromCharCode(letterFromAscii) + (i + 1);
 			let color = boardNumber % 2 ? squareColor[0] : squareColor[1];
-			let pieceData = initialPos[coordinate];
 
-			let pieceCode = !pieceData ? null : pieceData.code;
-			let colorPiece = !pieceData ? null : pieceData.colorPiece;
+
+
+			//let pieceData = initialPos[coordinate];
+			//let srcImg = pieceData ? pieceData.srcImg : '';
+
+
+
+			//			let pieceCode = !pieceData ? null : pieceData.code;
+			//	let colorPiece = !pieceData ? null : pieceData.colorPiece;
 
 			let squareData = {
 				[coordinate]: {
 					number: boardNumber,
 					color: color,
-					piece: pieceCode,
-					colorPiece: colorPiece,
-					name: coordinate
+					//piece: pieceCode,
+					//colorPiece: colorPiece,
+					name: coordinate,
+					piece: '',
+					colorPiece: '',
+					pieceImg: ''
+					//	img: srcImg
 				}
 			}
 
@@ -129,36 +137,81 @@ let createHtmlSquares = () => {
 
 	for (let coordinateName in board) {
 
-		let coordinateObj = board[coordinateName];
-
+		let coordinateObject = board[coordinateName];
+		//console.log(coordinateObject);
 		// create element
 		let square = document.createElement('div');
-
+		let img = document.createElement('img')
 		// attributes
-		square.setAttribute('id', coordinateObj.name);
+		square.setAttribute('id', coordinateObject.name);
 		square.setAttribute('class', 'square');
+
+		img.setAttribute('id', 'img-' + coordinateName);
 
 		square.style.width = '50px';
 		square.style.height = '50px';
-		square.style.background = coordinateObj.color;
+		square.style.background = coordinateObject.color;
+		square.textContent = coordinateName;
+		//img.setAttribute('src', coordinateObject.srcImg)
 
 		square.addEventListener('click', e => {
-			arr.push(e.target.id);
-			movePiece();
+			console.log(e.path[1].id);
+			//arr.push(e.target.id);
+			//movePiece();
 		});
 
-		renderPiece(square, coordinateObj, coordinateName);
+		//		renderPiece(square, coordinateObject, coordinateName);
 
 		// append
 		boardHtml.appendChild(square);
+		square.appendChild(img)
+		/*
+		let imgPieceSrc ='';
+		let imgPiece = document.createElement('img');
+		img.setAttribute('src', imgPieceSrc);
+		img.style.width = '40px';
+		img.style.height = '40px';
+		square.appendChild(imgPiece);
+		
+		*/
 	}
 };
 
-let renderPiece = (htmlElement, coordinateObj, coordinateName) => {
-	htmlElement.textContent = typeof coordinateObj.piece == 'string'
-		? coordinateName + createIcon(coordinateObj.piece)
+let renderPiece = (htmlElement, coordinateObject, coordinateName) => {
+	htmlElement.textContent = typeof coordinateObject.piece == 'string'
+		? coordinateName + createIcon(coordinateObject.piece)
 		: coordinateName;
 };
+
+let initialPieces = () => {
+	console.log(board);
+	for (const piece in piecesData) {
+		let pieceData = piecesData[piece];
+		let position = pieceData.initialPosition; // arr
+		for (const i in position) {
+			console.log(position[i], piece)
+			board[position[i]].piece = piece;
+		}
+
+	}
+	console.log(board);
+};
+
+let renderPieces = () => {
+	for (let i in board) {
+		let imgElement = document.getElementById('img-' + i);
+
+
+		let piece = board[i].piece;
+		if (piece) {
+			let pieceImg = piecesData[piece].srcImg;
+			imgElement.setAttribute('src', pieceImg);
+			console.log(board[i], piece, pieceImg)
+		}
+
+	}
+};
+
 
 let movePiece = () => {
 
@@ -213,4 +266,13 @@ let movePiece = () => {
 createBoardObj();
 createHtmlBoard();
 createHtmlSquares();
+initialPieces();
+renderPieces();
+/*
 
+let img = document.createElement('img');
+img.setAttribute('src', './public/black_pawn.png');
+img.style.width = '40px';
+img.style.height = '40px';
+document.body.appendChild(img);
+*/
