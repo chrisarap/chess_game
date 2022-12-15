@@ -123,6 +123,7 @@ let renderPieces = () => {
 			imgElement.setAttribute('src', pieceImg);
 		}
 	}
+	console.log('last board: ', board)
 };
 
 let movementArr = [];
@@ -131,8 +132,8 @@ let movePiece = () => {
 
 	let firstCoordinate = movementArr[0];
 	let firstElement = document.getElementById(firstCoordinate);
-
-	let auxPiece = '';
+	let firstPiece = board[firstCoordinate].piece;
+	let auxPiece = firstPiece;
 
 	if (movementArr.length == 1) {
 		if (!board[firstCoordinate].piece) {
@@ -146,22 +147,27 @@ let movePiece = () => {
 	} else if (movementArr.length == 2) {
 		let secondCoordinate = movementArr[1];
 		let secondElement = document.getElementById(secondCoordinate);
-		let firstImg = document.getElementById('img-'+firstCoordinate);
+		let secondPiece = board[secondCoordinate].piece ? board[secondCoordinate].piece : null;
+		let firstColorPiece = piecesData[firstPiece].colorPiece;
+		let secondColorPiece = secondPiece ? piecesData[secondPiece].colorPiece : null;
 
-		if (firstCoordinate != secondCoordinate) {
-			auxPiece = board[firstCoordinate].piece;
+		let firstImg = document.getElementById('img-' + firstCoordinate);
+
+		if (firstCoordinate != secondCoordinate && firstColorPiece != secondColorPiece) {
+			console.log('first coordinate ', board[firstCoordinate])
 			board[secondCoordinate].piece = auxPiece;
 			board[firstCoordinate].piece = null;
-			firstElement.style.background = auxColor;
-			console.log('color check',firstElement, 'color:', auxColor)
+
 			firstImg.removeAttribute('src');
-			auxColor = '';
+			auxPiece = '';
+			renderPieces();
 		}
-		auxPiece = '';
+		firstElement.style.background = auxColor;
+		auxColor = '';
 		movementArr = [];
-		renderPieces();
-		console.log('last board', board);
 	}
+
+	console.log('arr length', movementArr.length)
 	/*
 	
 
