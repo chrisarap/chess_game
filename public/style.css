@@ -6,6 +6,7 @@ body {
 #board {
   display: flex;
   flex-wrap: wrap-reverse;
+  border: solid;
 }
 
 .square {
