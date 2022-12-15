@@ -168,38 +168,6 @@ let movePiece = () => {
 	}
 
 	console.log('arr length', movementArr.length)
-	/*
-	
-
-		
-			} else if (movementArr.length == 2) {
-		
-				let second = board[movementArr[1]];
-		
-				if (first != second && first.colorPiece != second.colorPiece) {
-					let secondElement = document.getElementById(second.name);
-		
-					console.log('first: ', first, '\nsecond: ', second);
-					aux = first.piece;
-					let auxColorPiece = first.colorPiece;
-		
-					second.piece = first.piece;
-					second.colorPiece = auxColorPiece;
-		
-					first.piece = null;
-					first.colorPiece = null;
-					aux = '';
-					movementArr = [];
-		
-					renderPiece(firstElement, first, first.name);
-					renderPiece(secondElement, second, second.name);
-		
-					console.log(board);
-				}
-		
-				firstElement.style.background = firstElementColor;
-				movementArr = [];
-			}*/
 };
 
 createBoardObj();
@@ -207,11 +175,3 @@ createHtmlBoard();
 createHtmlSquares();
 initialPieces();
 renderPieces();
-/*
-
-let img = document.createElement('img');
-img.setAttribute('src', './public/black_pawn.png');
-img.style.width = '40px';
-img.style.height = '40px';
-document.body.appendChild(img);
-*/
